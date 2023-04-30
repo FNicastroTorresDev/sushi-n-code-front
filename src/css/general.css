@@ -7,6 +7,10 @@ body {
   background-color: var(--white-secondary-color);
 }
 
+.custom-main {
+  height: 80vh;
+}
+
 .text-custom-color {
   color: var(--white-secondary-color);
 }
@@ -38,3 +42,4 @@ body {
 .link-custom:hover {
   text-shadow: 0 0 10px var(--white-secondary-color);
 }
+

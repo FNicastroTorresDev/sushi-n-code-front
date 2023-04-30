@@ -1,4 +1,5 @@
 import React from 'react'
+import LoginForm from '../../components/LoginForm/LoginForm'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 
@@ -7,8 +8,8 @@ const Login = () => {
     <>
       <Navbar />
 
-      <main>
-        <h2>Login</h2>
+      <main className='custom-main d-flex justify-content-center align-items-center'>
+        <LoginForm />
       </main>
 
       <Footer />
