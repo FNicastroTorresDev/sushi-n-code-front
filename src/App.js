@@ -4,13 +4,15 @@ import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import { useState, useEffect } from 'react';
+import { render } from 'react-dom';
+import { ProtectedRoute } from './components/ProtectedRoutes/ProtectedRoutes';
 
 function App() {
   const [ token, setToken ] = useState(null)
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken')
-    setToken(token)
+    const newToken = localStorage.getItem('accessToken')
+    setToken(newToken)
   }, [])
 
   // const token = localStorage.getItem('accessToken')
@@ -23,9 +25,15 @@ function App() {
 
       <Route path='/login' element={ <Login /> } />
 
-      <Route path='/' element={token? <Home /> : <Navigate from='/home' exact to='/landing'/>} />
+      <Route path='*' element={<h1>Error 404</h1>} />
 
-      <Route path='/home' element={token? <Home /> : <Navigate from='/home' exact to='/login'/>} />
+      {/* <Route path='/' element={token? <Home /> : <Navigate from='/home' exact to='/landing'/>} />
+
+      <Route path='/home' element={token? <Home /> : <Navigate from='/home' exact to='/login'/>} /> */}
+
+      <Route element={<ProtectedRoute />}>
+        <Route path='/home' element={<Home />} />
+      </Route>
     </Routes>
   );
 }

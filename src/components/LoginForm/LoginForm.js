@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import './loginForm.css'
 import { login } from '../../services/login'
@@ -7,7 +6,6 @@ import { login } from '../../services/login'
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const [ wrongCredentials, setWrongCredentials ] = useState('')
-  const navigate = useNavigate()
 
   const onSubmit = async (data) => {
     const { message, accessToken } = await login(data)
@@ -19,7 +17,8 @@ const LoginForm = () => {
     }
 
     window.localStorage.setItem('accessToken', accessToken)
-    navigate('/home')
+    // navigate('/home')
+    window.location.replace('/home')
   }
 
   return (
@@ -30,7 +29,7 @@ const LoginForm = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='mb-3'>
-          <label for='email' className='form-label'>Correo electrónico</label>
+          <label for='email' className='form-label'>Correo electrónico:</label>
           <input id='email' className='form-control' {...register(
             'email', {
               required: {
@@ -46,7 +45,7 @@ const LoginForm = () => {
         </div>
     
         <div className='mb-3'>
-          <label for='password' className='form-label'>Contraseña</label>
+          <label for='password' className='form-label'>Contraseña:</label>
           <input id='password' type='password' className='form-control' {...register(
             'password', {
             required: {

@@ -26,10 +26,10 @@ body {
 
 .custom-button-2 {
   font-weight: bold;
-  padding: 12px 24px;
+  padding: 8px 16px;
   background-color: var(--white-secondary-color);
   color: var(--green-primary-color);
-  border: none;
+  border: solid 2px var(--green-primary-color);
   border-radius: 30px;
 }
 

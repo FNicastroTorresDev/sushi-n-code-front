@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer'
 import '../../css/general.css'
 import imgLanding from '../../assets/sushiLandingPage.jpeg'
 import './landing.css'
+import RegisterForm from '../../components/RegisterForm/RegisterForm'
 
 const Home = () => {
   return (
@@ -28,6 +29,8 @@ const Home = () => {
         </main>
 
       <Footer />
+
+      <RegisterForm />
     </>
   )
 }
