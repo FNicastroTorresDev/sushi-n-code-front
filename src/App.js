@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { ProtectedRoute } from './components/ProtectedRoutes/ProtectedRoutes';
+import Orders from './pages/Orders/Orders';
 
 function App() {
   const [ token, setToken ] = useState(null)
@@ -21,7 +22,9 @@ function App() {
     <Routes>
       <Route index element={<Navigate to='/landing' />} />
 
-      <Route path='/landing' element={ <Landing /> } />   
+      <Route path='/landing' element={ <Landing /> } />
+
+      <Route path='/orders' element={ <Orders /> } />   
 
       <Route path='/login' element={ <Login /> } />
 
