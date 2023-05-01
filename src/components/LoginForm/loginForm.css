@@ -1,0 +1,22 @@
+
+.custom-form-container {
+  box-shadow: 3px 3px 3px 3px var(--green-primary-color);
+  border-radius: 10px;
+  width: 350px;
+  margin: 50px auto;
+  padding: 25px;
+}
+
+.error-message {
+  color: red;
+  font-size: small;
+}
+
+.custom-error-message {
+  border: dashed 2px red;
+  color: red;
+  background-color: lightgray;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 32px auto;
+}
