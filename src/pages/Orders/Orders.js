@@ -7,7 +7,7 @@ import Footer from '../../components/Footer/Footer'
 const Producto = () => {
   const params = useParams()
   const [product, setProduct] = useState(null)
-  const [ setCantidad] = useState('1')
+  const [cantidad, setCantidad] = useState('1')
 
   const fetchProduct = async (_id) => {
     const response = await fetch(`http://localhost:8000/api/menues/64518014224b0f59582c50a6`)
@@ -34,8 +34,9 @@ const Producto = () => {
           <div className='d-flex flex-column col-8 info'>
             <p> {product.menu.details} </p>
             <span class="badge bg-secondary col-2"> {product.menu.category} </span>
-            <h4 className='mt-3'>${product.menu.price}</h4>
-                    
+            {/* <h4 className='mt-3'>${product.menu.price}</h4> */}
+            <h4 className='mt-3'>${ cantidad===1 ? product.menu.price*1 : product.menu.price*parseInt(cantidad)}</h4>
+       
             <div className='d-flex align-items-center mx-5  justify-content-end comprar'>
               <p className='mx-3 my-0'> Hay {product.menu.state} 
                   !! 
