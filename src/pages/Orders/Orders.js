@@ -25,41 +25,41 @@ const Producto = () => {
   return (
     <>
        <Navbar />
-      <section className='product-detail-container container p-4 mt-5'>
-      <p><h3 className='d-flex justify-content-center'> {product.menu.name} </h3></p>
+      <section className='product-detail-container container p-4 mt-5 custom-main'>
+        <p><h3 className='d-flex justify-content-center'> {product.menu.name} </h3></p>
 
-      <div className='d-flex row contenido'>
-        <img src={product.menu.imgUrl} className='col-4 image' alt={product.menu.name}/>
+        <div className='d-flex row contenido'>
+          <img src={product.menu.imgUrl} className='col-4 image' alt={product.menu.name}/>
 
-        <div className='d-flex flex-column col-8 info'>
-          <p> {product.menu.details} </p>
-          <span class="badge bg-secondary col-2"> {product.menu.category} </span>
-          <h4 className='mt-3'>${product.menu.price}</h4>
-                  
-          <div className='d-flex align-items-center mx-5  justify-content-end comprar'>
-            <p className='mx-3 my-0'> Hay {product.menu.state} 
-                !! 
-            </p>
-             <h5 className='my-0'> Cantidad 
-            </h5>
-            <select className="form-select mx-3" aria-label="Default select example" onChange={(event) => setCantidad(event.target.value)}>              
-              <option value="1" selected>1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          <button className='btn btn-outline-success m-0'> Realizar Pedido</button>
-            
+          <div className='d-flex flex-column col-8 info'>
+            <p> {product.menu.details} </p>
+            <span class="badge bg-secondary col-2"> {product.menu.category} </span>
+            <h4 className='mt-3'>${product.menu.price}</h4>
+                    
+            <div className='d-flex align-items-center mx-5  justify-content-end comprar'>
+              <p className='mx-3 my-0'> Hay {product.menu.state} 
+                  !! 
+              </p>
+              <h5 className='my-0'> Cantidad 
+              </h5>
+              <select className="form-select mx-3" aria-label="Default select example" onChange={(event) => setCantidad(event.target.value)}>              
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+
+              <button className='btn btn-outline-success m-0'> Realizar Pedido</button>
+              
+            </div>                    
           </div>
-                   
         </div>
-      </div>
     </section>
     <Footer />
     </>
