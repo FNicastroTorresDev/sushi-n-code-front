@@ -5,6 +5,7 @@ import './orders.css'
 const Producto = () => {
   const params = useParams()
   const [product, setProduct] = useState(null)
+  const [cantidad, setCantidad] = useState('1')
 
   const fetchProduct = async (id) => {
     const response = await fetch(`...`)
@@ -37,7 +38,7 @@ const Producto = () => {
             </p> */}
              <h5 className='my-0'> Cantidad 
             </h5>
-            <select className="form-select mx-3" aria-label="Default select example">              
+            <select className="form-select mx-3" aria-label="Default select example" onChange={(event) => setCantidad(event.target.value)}>              
               <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
