@@ -1,4 +1,4 @@
-const basePath = 'http://localhost:8000/api/orders'
+const basePath = 'https://sushi-n-code.onrender.com/api/orders'
 
 export const allOrders = async (token) => {
   const res = await fetch(`${basePath}`, {
