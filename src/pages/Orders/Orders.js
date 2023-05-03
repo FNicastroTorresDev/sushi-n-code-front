@@ -13,14 +13,51 @@ const Producto = () => {
     
     setProduct(data)
   }
-  // console.log(product.menu)
+
   useEffect(() => {
     fetchProduct(params._id)
   }, [params._id])
 
   if (!product) return <h3 className='text-center mt-3'>Cargando producto...</h3>
+  
+  
+  const data ={
+    "user": "",
+    "menu": ""
+}
+   
+  const onSubmit = () => {  
+    // console.log(product.menu) 
+    // data=product
+    // data.menu._id="64506cbd8a7b0132694f9957";
+    data.menu=product.menu.name;
+    data.user= "versace@prueba.com";
+    // data.menu.cantidad= parseInt(cantidad);
+    // data.menu.total=parseInt(cantidad)*data.menu.price;
+    
+    // data.menu.name=product.menu.name
+    console.log(data)  
+    createOrder(data)
+  }
 
-  return (      
+  const createOrder = async(data) => {
+    try {
+      const response = await fetch('http://localhost:8000/api/orders', {
+      method: 'POST',
+      // body: JSON.stringify(data),
+      headers:{
+        'Content-Type': 'application/jon'
+      }
+    });
+    const body =await response.json()
+    console.log(body)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return (     
+           
       <section className='product-detail-container container p-4 my-5 custom-main'>
         <p><h3 className='d-flex justify-content-center'> {product.menu.name} </h3></p>
 
@@ -52,7 +89,7 @@ const Producto = () => {
                 <option value="10">10</option>
               </select>
 
-              <button className='btn btn-outline-success m-0'> Realizar Pedido</button>
+              <button className='btn btn-outline-success m-0' type='submit'  onClick={onSubmit}> Realizar Pedido</button>
               
             </div>                    
           </div>
