@@ -1,13 +1,8 @@
 import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
 import Card from '../../components/Card/Card'
 
 const Home = () => {
   return (
-    <>
-      <Navbar />
-
       <div className='d-flex justify-content-lg-around align-items-lg-center flex-wrap'>
         <Card
         title='Menu General'
@@ -22,9 +17,6 @@ const Home = () => {
         image='https://img.freepik.com/foto-gratis/palillos-rollo-sushi-filadelfia-fondo-negro-hecho-salmon_8353-6016.jpg?w=996&t=st=1682980124~exp=1682980724~hmac=eddf957e6cf91a4d99bd50d8f13656262d44d380cce4a365e1eb310409d51df7'
         />
       </div>
-
-      <Footer/>
-    </>
   )
 }
 

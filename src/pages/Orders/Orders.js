@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './orders.css'
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
 
 const Producto = () => {
   const params = useParams()
@@ -22,10 +20,8 @@ const Producto = () => {
 
   if (!product) return <h3 className='text-center mt-3'>Cargando producto...</h3>
 
-  return (
-    <>
-       <Navbar />
-      <section className='product-detail-container container p-4 mt-5 custom-main'>
+  return (      
+      <section className='product-detail-container container p-4 my-5 custom-main'>
         <p><h3 className='d-flex justify-content-center'> {product.menu.name} </h3></p>
 
         <div className='d-flex row contenido'>
@@ -61,10 +57,7 @@ const Producto = () => {
             </div>                    
           </div>
         </div>
-    </section>
-    <Footer />
-    </>
-    
+    </section>    
   )
 }
 

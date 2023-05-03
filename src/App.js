@@ -7,6 +7,8 @@ import { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { ProtectedRoute } from './components/ProtectedRoutes/ProtectedRoutes';
 import Orders from './pages/Orders/Orders';
+import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
 
 function App() {
   const [ token, setToken ] = useState(null)
@@ -19,25 +21,32 @@ function App() {
   // const token = localStorage.getItem('accessToken')
 
   return (
-    <Routes>
-      <Route index element={<Navigate to='/landing' />} />
+    <>
+      <Navbar/>
 
-      <Route path='/landing' element={ <Landing /> } />
+      <Routes>
+        <Route index element={<Navigate to='/landing' />} />
 
-      <Route path='/orders' element={ <Orders /> } />   
+        <Route path='/landing' element={ <Landing /> } />
 
-      <Route path='/login' element={ <Login /> } />
+        <Route path='/orders' element={ <Orders /> } />   
 
-      <Route path='*' element={<h1>Error 404</h1>} />
+        <Route path='/login' element={ <Login /> } />
 
-      {/* <Route path='/' element={token? <Home /> : <Navigate from='/home' exact to='/landing'/>} />
+        <Route path='*' element={<h1>Error 404</h1>} />
 
-      <Route path='/home' element={token? <Home /> : <Navigate from='/home' exact to='/login'/>} /> */}
+        {/* <Route path='/' element={token? <Home /> : <Navigate from='/home' exact to='/landing'/>} />
 
-      <Route element={<ProtectedRoute />}>
-        <Route path='/home' element={<Home />} />
-      </Route>
-    </Routes>
+        <Route path='/home' element={token? <Home /> : <Navigate from='/home' exact to='/login'/>} /> */}
+
+        <Route element={<ProtectedRoute />}>
+          <Route path='/home' element={<Home />} />
+        </Route>
+      </Routes>
+
+      <Footer/>
+    </>
+    
   );
 }
 

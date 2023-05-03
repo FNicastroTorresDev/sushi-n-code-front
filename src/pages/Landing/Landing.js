@@ -1,7 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Navbar from '../../components/Navbar/Navbar'
-import Footer from '../../components/Footer/Footer'
 import '../../css/general.css'
 import imgLanding from '../../assets/sushiLandingPage.jpeg'
 import './landing.css'
@@ -10,8 +8,6 @@ import RegisterForm from '../../components/RegisterForm/RegisterForm'
 const Home = () => {
   return (
     <>
-      <Navbar />
-
         <main>
           <section className='custom-container'>
             <article className='custom-hero-text'>
@@ -27,8 +23,6 @@ const Home = () => {
             <img className='img-custom-size' src={imgLanding} alt='Sushi' />
           </section>
         </main>
-
-      <Footer />
 
       <RegisterForm />
     </>
