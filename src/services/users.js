@@ -11,3 +11,32 @@ export const registerUser = async (data) => {
     .then(res => res.json())
     .catch(error => error.json())
 }
+
+export const allUsers = async (token) => {
+  const res = await fetch(`${basePath}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'accesstoken': `${token}`
+    }
+  })
+
+  const data = await res.json()
+
+  return data
+}
+
+export const enableDisable = async (id, action, token) => {
+  const stateToChange = action === 'Inhabilitar' ? 'Inactivo' : 'Activo'
+
+  await fetch(`${basePath}/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'accesstoken': `${token}`
+    },
+    body: JSON.stringify({
+      state: stateToChange
+    })
+  })
+}

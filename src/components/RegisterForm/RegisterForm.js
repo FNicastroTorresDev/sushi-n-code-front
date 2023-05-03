@@ -20,9 +20,9 @@ const RegisterForm = () => {
     Swal.fire({
       icon: 'success',
       title: `${created.message}`,
-      timer: 10000,
+      timer: 5000,
       timerProgressBar: true
-    }).then(setTimeout( () => window.location.reload(), 10000))
+    }).then(() => window.location.reload())
   }
 
   return (

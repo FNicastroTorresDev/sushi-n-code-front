@@ -27,9 +27,9 @@ const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse text-custom-color" id="navbarNavAltMarkup">
             {
-              location.pathname === '/home'
+              location.pathname === '/home' || location.pathname === '/admin'
                 ? <div className="navbar-nav d-flex">
-                    <NavLink className="dropdown-item mx-2 link-custom text-custom-color" href='#'>Administración</NavLink>
+                    <NavLink className="dropdown-item mx-2 link-custom text-custom-color" exact to={'/admin'}>Administración</NavLink>
                     <button className="dropdown-item mx-2 link-custom text-custom-color" onClick={closeSession}>Cerrar sesión</button>
                   </div>
                 : <div className="navbar-nav d-flex">
