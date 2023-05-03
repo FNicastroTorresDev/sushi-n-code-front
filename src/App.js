@@ -3,8 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
+import Admin from './pages/Admin/Admin';
 import { useState, useEffect } from 'react';
-import { render } from 'react-dom';
 import { ProtectedRoute } from './components/ProtectedRoutes/ProtectedRoutes';
 
 function App() {
@@ -33,6 +33,7 @@ function App() {
 
       <Route element={<ProtectedRoute />}>
         <Route path='/home' element={<Home />} />
+        <Route path='/admin' element={<Admin />} />
       </Route>
     </Routes>
   );
