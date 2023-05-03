@@ -1,4 +1,4 @@
-const basePath = 'http://localhost:8000/api/users'
+const basePath = 'https://sushi-n-code.onrender.com/api/users'
 
 export const registerUser = async (data) => {
   return await fetch(`${basePath}`, {
