@@ -21,15 +21,15 @@ const Producto = () => {
 
   return (
     <section className='product-detail-container container p-4 mt-5'>
-      <p><h3 className='d-flex justify-content-center'> {...} </h3></p>
+      <p><h3 className='d-flex justify-content-center'>Lorem</h3></p>
 
       <div className='d-flex row contenido'>
-        <img src={...} className='col-4 image' alt={...}/>
+        <img src='' className='col-4 image' alt='Imagen faltante'/>
 
         <div className='d-flex flex-column col-8 info'>
-          <p> {...} </p>
+          <p></p>
           {/* <span class="badge bg-secondary col-2"> {product.category} </span> */}
-          <h4 className='mt-3'>${...}</h4>
+          <h4 className='mt-3'>Lorem</h4>
                   
           <div className='d-flex align-items-center mx-5  justify-content-end comprar'>
             {/* <p className='mx-3 my-0'> Hay {product.rating.count} 

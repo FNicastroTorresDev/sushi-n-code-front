@@ -8,7 +8,7 @@ const LoginForm = () => {
   const [ wrongCredentials, setWrongCredentials ] = useState('')
 
   const onSubmit = async (data) => {
-    const { message, accessToken } = await login(data)
+    const { message, user, accessToken } = await login(data)
 
     if (!accessToken) {
       setWrongCredentials(message)
@@ -17,7 +17,7 @@ const LoginForm = () => {
     }
 
     window.localStorage.setItem('accessToken', accessToken)
-    // navigate('/home')
+    window.localStorage.setItem('user', user)
     window.location.replace('/home')
   }
 
