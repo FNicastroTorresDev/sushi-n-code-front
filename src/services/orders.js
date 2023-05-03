@@ -14,6 +14,24 @@ export const allOrders = async (token) => {
   return data
 }
 
+export const createOrder = async (data) => {
+  const res = await fetch(`${basePath}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+
+  const created = await res.json()
+
+  if (created.message) {
+    return true
+  }
+
+  return false
+}
+
 export const changeToDelivered = async (id) => {
   await fetch(`${basePath}/${id}`, {
     method: 'PATCH',
