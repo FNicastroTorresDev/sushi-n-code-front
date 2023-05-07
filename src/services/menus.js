@@ -1,4 +1,4 @@
-const basePath = 'http://localhost:8000/api/menues'
+const basePath = 'https://sushi-n-code.onrender.com/api/menues'
 
 export const createMenu = async (data) => {
   const res = await fetch(`${basePath}`, {
