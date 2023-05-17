@@ -73,10 +73,10 @@ const AdminMenues = ({ setModalIsOpen, setIdMenu }) => {
           <tr>
             <th scope='row'>{menu.name}</th>
             <td><a href={menu.imgUrl} target='_blank' rel='noreferrer'>Ver Imagen</a></td>
-            <td>{menu.state}</td>
-            <td>${menu.price}</td>
-            <td>{menu.details}</td>
-            <td>{menu.category}</td>
+            <td data-titulo="Estado">{menu.state}</td>
+            <td data-titulo="Precio">${menu.price}</td>
+            <td data-titulo="Detalle">{menu.details}</td>
+            <td data-titulo="Categoria">{menu.category}</td>
             <td id={menu._id}>
               <i title='Modificar' className="bi bi-pen" data-bs-toggle="modal" data-bs-target="#editMenu-form" onClick={menuToEdit}></i>
               <i title='Eliminar' className="bi bi-trash ms-3" onClick={deleteMenu}></i>

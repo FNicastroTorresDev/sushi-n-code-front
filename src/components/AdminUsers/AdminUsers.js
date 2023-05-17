@@ -56,10 +56,10 @@ const AdminUsers = () => {
       <tbody className='table-group-divider'>
         {userData.map( user => (
           <tr>
-            <th scope='row'>{user.email}</th>
-            <td>{user.fullname}</td>
-            <td>{user.state}</td>
-            <td>{user.role}</td>
+            <th data-titulo= "email">{user.email}</th>
+            <td data-titulo="Nombre Completo">{user.fullname}</td>
+            <td data-titulo="Estado">{user.state}</td>
+            <td data-titulo="Rol">{user.role}</td>
             <td>
               <i id={user._id} {
                 ...user.state === 'Activo'

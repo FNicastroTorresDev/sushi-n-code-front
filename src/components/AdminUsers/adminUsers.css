@@ -6,3 +6,38 @@ caption {
 i {
   cursor: pointer;
 }
+
+@media (max-width: 30em) {
+ table tr{
+  display : flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  padding: 1em;
+  margin-bottom: 1em;
+  font-size: .9em;
+
+ }
+
+table td[data-titulo]{
+  display: flex;
+}
+
+table td[data-titulo]::before{
+  content: attr(data-titulo);
+  width: 100px;
+  font-weight: bold;
+  color: silver; 
+}
+
+ table thead{
+  display:none;
+ }
+
+ table caption{
+  display : none;
+}
+
+
+
+  
+}

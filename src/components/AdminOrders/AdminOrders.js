@@ -53,9 +53,9 @@ const AdminOrders = () => {
         {orderData.map( order => (
           <tr>
             <th scope='row'>{order.user}</th>
-            <td>{order.menu}</td>
-            <td>{order.date}</td>
-            <td>{order.state}</td>
+            <td data-titulo="Menu">{order.menu}</td>
+            <td data-titulo="Fecha y Hora">{order.date}</td>
+            <td data-titulo="Estado">{order.state}</td>
             <td id={order._id}>
               {order.state === 'Pendiente'
               ? <i title='Confirmar entrega' className="bi bi-check-lg" onClick={confirmDelivery}></i>
