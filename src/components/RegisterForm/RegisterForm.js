@@ -49,6 +49,10 @@ const RegisterForm = () => {
                   maxLength: {
                     value: 35,
                     message: 'El nombre debe tener menos de 35 caracteres.'
+                  },
+                  pattern: {
+                    value: /^[A-Za-z\s]+$/g,
+                    message: 'No se puede ingresar números o caracteres especiales.'
                   }
                 })}/>
                 {errors.fullname && <span className='error-message'>{errors.fullname.message}</span>}
