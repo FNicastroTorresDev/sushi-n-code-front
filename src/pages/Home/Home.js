@@ -3,7 +3,7 @@ import Card from '../../components/Card/Card'
 import { allMenues } from '../../services/menus'
 
 const Home = () => {
-  const [ allMenus, setAllMenus ] = useState([])
+  const [ allMenus, setAllMenus ] = useState(null)
   const accesToken = window.localStorage.getItem('accessToken')
 
   const menusToShow = async () => {
@@ -14,6 +14,8 @@ const Home = () => {
   useEffect( () => {
     menusToShow()
   }, [])
+
+  if (!allMenus) return <h2 className='custom-main d-flex justify-content-center align-items-center text-center mt-3'>Cargando menús...</h2>
 
   return (
     <main className='m-3 p-3 d-flex flex-column align-items-center'>
