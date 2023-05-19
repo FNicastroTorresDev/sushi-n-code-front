@@ -1,4 +1,4 @@
-const basePath = 'https://sushi-n-code.onrender.com/api/orders'
+const basePath = `${process.env.REACT_APP_BASE_PATH}/api/orders`
 
 export const allOrders = async (token) => {
   const res = await fetch(`${basePath}`, {

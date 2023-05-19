@@ -1,4 +1,5 @@
-const basePath = 'https://sushi-n-code.onrender.com/api/menues'
+import axios from 'axios'
+const basePath = `${process.env.REACT_APP_BASE_PATH}/api/menues`
 
 export const createMenu = async (data) => {
   const res = await fetch(`${basePath}`, {
@@ -52,4 +53,23 @@ export const getOneMenu = async (id) => {
   const data = await res.json()
 
   return data
+}
+
+export const editOneMenu = async (data) => {
+  const { _id, name, imgUrl, state, price, details } = data
+
+  const response = await axios.patch(`${basePath}/${_id}`, {
+    name,
+    imgUrl,
+    state,
+    price,
+    details
+  }, {
+    headers: { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+  })
+
+  return response.data
 }
