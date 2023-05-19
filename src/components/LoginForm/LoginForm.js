@@ -2,12 +2,16 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import './loginForm.css'
 import { login } from '../../services/login'
+import Spinner from '../Spinner/Spinner'
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const [ wrongCredentials, setWrongCredentials ] = useState('')
+  const [ isLoading, setIsLoading ] = useState(false)
 
   const onSubmit = async (data) => {
+    setIsLoading(true)
+
     const { message, user, accessToken } = await login(data)
 
     if (!accessToken) {
@@ -16,6 +20,7 @@ const LoginForm = () => {
       return
     }
 
+    setIsLoading(true)
     window.localStorage.setItem('accessToken', accessToken)
     window.localStorage.setItem('user', user)
     window.location.replace('/home')
@@ -64,7 +69,11 @@ const LoginForm = () => {
           {errors.password && <span className='error-message'>{errors.password.message}</span>}
         </div>
 
-        <button type='submit' className='custom-button'>Ingresar</button>
+        <button type='submit' className='custom-button' disabled={isLoading}>
+          {isLoading 
+            ? <div className="spinner-border spinner-border-sm"></div>
+            : 'Ingresar'}
+        </button>
       </form>
     </section>
   )

@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import '../../css/general.css'
 import imgLanding from '../../assets/sushiLandingPage.jpeg'
 import './landing.css'
 import RegisterForm from '../../components/RegisterForm/RegisterForm'

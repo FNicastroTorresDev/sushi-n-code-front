@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { allOrders, changeToDelivered } from '../../services/orders'
 import Swal from 'sweetalert2'
+import Spinner from '../Spinner/Spinner'
 
 const AdminOrders = () => {
   const [ orderData, setOrderData ] = useState([])
+  const [ isLoading, setIsLoading ] = useState(true)
   const accessToken = window.localStorage.getItem('accessToken')
 
   const getAllOrders = async (token) => {
     const { data } = await allOrders(token)
     setOrderData(data)
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -50,6 +53,8 @@ const AdminOrders = () => {
         </tr>
       </thead>
       <tbody className='table-group-divider'>
+        {isLoading ? <tr><Spinner/></tr> : null }
+
         {orderData.map( order => (
           <tr>
             <th scope='row'>{order.user}</th>
