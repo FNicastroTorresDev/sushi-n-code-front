@@ -1,15 +1,33 @@
-const basePath = 'https://sushi-n-code.onrender.com/api/users'
+import axios from 'axios'
+const basePath = `${process.env.REACT_APP_BASE_PATH}/api/users`
 
-export const registerUser = async (data) => {
-  return await fetch(`${basePath}`, {
-    method: 'POST',
+// export const registerUser = async (data) => {
+//   return await fetch(`${basePath}`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(data)
+//   })
+//     .then(res => res.json())
+//     .catch(error => error.json())
+// }
+
+export const registerUser = async data => {
+  const { fullname, email, password } = data
+
+  const response = await axios.post(`${basePath}`, {
+    fullname, 
+    email, 
+    password
+  }, {
     headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
   })
-    .then(res => res.json())
-    .catch(error => error.json())
+  
+  return response.data
 }
 
 export const allUsers = async (token) => {

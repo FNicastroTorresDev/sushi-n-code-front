@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { createMenu } from '../../services/menus'
 import Swal from 'sweetalert2'
 
 const AddMenuForm = () => {
+  const [ isLoading, setIsLoading ] = useState(false)
   const { register, handleSubmit, formState: { errors }} = useForm()
 
   const onSubmit = async (data) => {
+    setIsLoading(true)
     const created = await createMenu(data)
 
     if (created.error) {
@@ -20,7 +22,10 @@ const AddMenuForm = () => {
     Swal.fire({
       icon:'success',
       title: `${created.message}`
-    }).then(() => window.location.reload())
+    }).then(() => {
+      window.location.reload()
+      setIsLoading(false)
+    })
   }
 
   return (
@@ -102,8 +107,14 @@ const AddMenuForm = () => {
             </form>
           </div>
           <div className="modal-footer">
-            <button type="button" className="link-custom custom-button-2" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" className="link-custom custom-button" form='addMenuForm'>Aceptar</button>
+            <button type="button" className="link-custom custom-button-2" data-bs-dismiss="modal" disabled={isLoading}>
+              Cancelar
+            </button>
+            <button type="submit" className="link-custom custom-button" form='addMenuForm' disabled={isLoading}>
+              {isLoading 
+                ? <div className="spinner-border spinner-border-sm"></div>
+                : 'Aceptar'}
+            </button>
           </div>
         </div>
       </div>

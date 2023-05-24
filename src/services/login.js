@@ -1,7 +1,7 @@
-const basePath = 'https://sushi-n-code.onrender.com'
+const basePath = `${process.env.REACT_APP_BASE_PATH}/api/login`
 
 export const login = async (data) => {
-  const response = await fetch(`${basePath}/api/login`, {
+  const response = await fetch(`${basePath}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -13,7 +13,7 @@ export const login = async (data) => {
 }
 
 export const validateToken = async (data) => {
-  return await fetch(`${basePath}/api/login/validate`, {
+  return await fetch(`${basePath}/validate`, {
      method: 'POST',
       headers: {
         'Content-Type': 'application/json',

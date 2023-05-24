@@ -3,15 +3,17 @@ import './adminUsers.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { allUsers, enableDisable } from '../../services/users'
 import Swal from 'sweetalert2'
+import Spinner from '../Spinner/Spinner'
 
 const AdminUsers = () => {
-
   const [ userData, setUserData ] = useState([])
+  const [ isLoading, setIsLoading ] = useState(true)
   const accessToken = window.localStorage.getItem('accessToken')
 
   const getAllUsers = async (token) => {
     const { data } = await allUsers(token)
     setUserData(data)
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -54,6 +56,8 @@ const AdminUsers = () => {
         </tr>
       </thead>
       <tbody className='table-group-divider'>
+        {isLoading ? <tr><Spinner/></tr> : null }
+
         {userData.map( user => (
           <tr>
             <th scope='row'>{user.email}</th>

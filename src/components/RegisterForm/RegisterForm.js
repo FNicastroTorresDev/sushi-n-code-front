@@ -1,28 +1,33 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useForm } from 'react-hook-form'
 import { registerUser } from '../../services/users'
 import Swal from 'sweetalert2'
 
 const RegisterForm = () => {
+  const [ isLoading, setIsLoading ] = useState(false)
   const { register, handleSubmit, formState: { errors }, watch } = useForm()
 
   const onSubmit = async (data) => {
-    const created = await registerUser(data)
+    setIsLoading(true)
 
-    if (created.error) {
+    try {
+      const created = await registerUser(data)
+      Swal.fire({
+        icon: 'success',
+        title: `${created.message}`,
+        timer: 5000,
+        timerProgressBar: true
+      }).then(() => {
+        window.location.reload()
+      })
+    } catch (err) {
       Swal.fire({
         icon: 'error',
-        title: `${created.error}`,
+        title: `${err.response.data.error}`,
       })
-      return
+    } finally {
+      setIsLoading(false)
     }
-
-    Swal.fire({
-      icon: 'success',
-      title: `${created.message}`,
-      timer: 5000,
-      timerProgressBar: true
-    }).then(() => window.location.reload())
   }
 
   return (
@@ -102,8 +107,14 @@ const RegisterForm = () => {
             </form>
           </div>
           <div className="modal-footer">
-            <button type="button" className="link-custom custom-button-2" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" className="link-custom custom-button" form='registerForm'>¡Registrarme!</button>
+            <button type="button" className="link-custom custom-button-2" data-bs-dismiss="modal" disabled={isLoading}>
+              Cancelar
+            </button>
+            <button type="submit" className="link-custom custom-button" form='registerForm' disabled={isLoading}>
+              {isLoading
+                ? <div className="spinner-border spinner-border-sm"></div>
+                : '¡Registrarme!'}
+            </button>
           </div>
         </div>
       </div>
