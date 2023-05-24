@@ -46,7 +46,7 @@ const Orders = () => {
     }).then(() => window.location.replace('/home'))
   }
 
-  if (!menu) return <h3 className='text-center mt-3'>Cargando Menú...</h3>
+  if (!menu) return <h2 className='custom-main d-flex justify-content-center align-items-center text-center mt-3'>Cargando menú...</h2>
 
   return (
     <main className='custom-main'>
