@@ -5,12 +5,14 @@ import { createOrder } from '../../services/orders'
 import './orders.css'
 import Swal from 'sweetalert2'
 import Spinner from '../../components/Spinner/Spinner'
+import jwt from 'jwt-decode'
 
 const Orders = () => {
   const { id } = useParams()
   const [ menu, setMenu ] = useState({})
   const [ isLoading, setIsLoading ] = useState(true)
   const user = localStorage.getItem('user')
+  const token = localStorage.getItem('accessToken')
 
   const getMenu = async (id) => {
     const menuToShow = await getOneMenu(id)
@@ -26,6 +28,17 @@ const Orders = () => {
     const newOrder = {
       user: user,
       menu: menu.name
+    }
+
+    const { state } = jwt(token)
+
+    if (state === 'Inactivo') {
+      Swal.fire({
+        icon: 'error',
+        title: 'No tiene permitido hacer pedidos',
+        text: 'Contacte con nuestros representantes para más información.'
+      })
+      return
     }
 
     const createOk = await createOrder(newOrder)

@@ -16,17 +16,26 @@ export const createMenu = async (data) => {
 }
 
 export const allMenues = async (token) => {
-  const res = await fetch(`${basePath}`, {
-    method: 'GET',
+  // const res = await fetch(`${basePath}`, {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'accesstoken': `${token}`
+  //   }
+  // })
+
+  // const data = await res.json()
+
+  // return data
+
+  const response = await axios.get(`${basePath}`, {
     headers: {
       'Content-Type': 'application/json',
       'accesstoken': `${token}`
     }
   })
 
-  const data = await res.json()
-
-  return data
+  return response.data
 }
 
 export const deleteOneMenu = async (id) => {
