@@ -18,7 +18,7 @@ const Home = () => {
     menusToShow()
   }, [])
 
-  if (!allMenus) return <h2 className='custom-main d-flex justify-content-center align-items-center text-center mt-3'>Cargando menús...</h2>
+  // if (!allMenus) return <h2 className='custom-main d-flex justify-content-center align-items-center text-center mt-3'>Cargando menús...</h2>
 
   return (
     <main className='custom-main m-3 p-3 d-flex flex-column align-items-center'>

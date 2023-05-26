@@ -11,14 +11,17 @@ const AdminUsers = () => {
   const accessToken = window.localStorage.getItem('accessToken')
 
   const getAllUsers = async (token) => {
-    const { data } = await allUsers(token)
-    setUserData(data)
-    setIsLoading(false)
+    try {
+      const { data } = await allUsers(token)
+      setUserData(data)
+      setIsLoading(false)
+    } catch (err) {
+      setUserData([])
+    }
   }
 
   useEffect(() => {
     getAllUsers(accessToken)
-    console.log(userData)
   }, [])
   
   const changeState = async ({ target: {id, title} }) => {
