@@ -29,11 +29,11 @@
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 991px) {
   .custom-container {
     flex-direction: column-reverse;
   }
-
   .custom-hero-text {
     padding: 20px;
     text-align: center;
@@ -44,4 +44,5 @@
     height: auto;
     clip-path: none;
   }
+
 }
