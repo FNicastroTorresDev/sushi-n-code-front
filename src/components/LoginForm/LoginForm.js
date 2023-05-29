@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import './loginForm.css'
 import { login } from '../../services/login'
-import Spinner from '../Spinner/Spinner'
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
