@@ -62,39 +62,42 @@ const AdminMenues = () => {
 
   return (
     <>
-      <table className='my-3 table table-striped table-hover'>
-        <caption className='top fs-3 fw-bold'>
-          Menús <i title='Crear nuevo Menú' className="bi bi-plus-square" data-bs-toggle="modal" data-bs-target="#addMenu-form"></i></caption>
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Imagen</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Detalles</th>
-            <th scope="col">Categoría</th>
-            <th scope="col">Acciones</th>
-          </tr>
-        </thead>
-        <tbody className='table-group-divider'>
-          {isLoading ? <tr><Spinner/></tr> : null }
-
-          {menuData.map( menu => (
+      <div className='table-responsive container'>
+        <table className='my-3 table table-striped table-hover'>
+          <caption className='top fs-3 fw-bold'>
+            Menús <i title='Crear nuevo Menú' className="bi bi-plus-square" data-bs-toggle="modal" data-bs-target="#addMenu-form"></i></caption>
+          <thead>
             <tr>
-              <th scope='row'>{menu.name}</th>
-              <td><a href={menu.imgUrl} target='_blank' rel='noreferrer'>Ver Imagen</a></td>
-              <td>{menu.state}</td>
-              <td>${menu.price}</td>
-              <td>{menu.details}</td>
-              <td>{menu.category}</td>
-              <td id={menu._id}>
-                <i title='Modificar' className="bi bi-pen" onClick={handleEditModal}></i>
-                <i title='Eliminar' className="bi bi-trash ms-3" onClick={deleteMenu}></i>
-              </td>
+              <th scope="col">Nombre</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Detalles</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className='table-group-divider'>
+            {isLoading ? <tr><Spinner/></tr> : null }
+
+            {menuData.map( menu => (
+              <tr>
+                <th scope='row'>{menu.name}</th>
+                <td><a href={menu.imgUrl} target='_blank' rel='noreferrer'>Ver Imagen</a></td>
+                <td>{menu.state}</td>
+                <td>${menu.price}</td>
+                <td>{menu.details}</td>
+                <td>{menu.category}</td>
+                <td id={menu._id}>
+                  <i title='Modificar' className="bi bi-pen" onClick={handleEditModal}></i>
+                  <i title='Eliminar' className="bi bi-trash ms-3" onClick={deleteMenu}></i>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      
 
       <EditMenuModal show={show} handleClose={handleClose} menuToEdit={menuToEdit} />
     </>
