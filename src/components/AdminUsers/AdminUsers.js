@@ -57,7 +57,7 @@ const AdminUsers = () => {
         </tr>
       </thead>
       <tbody className='table-group-divider'>
-        {isLoading ? <tr><Spinner/></tr> : null }
+        {isLoading ? <Spinner/> : null }
 
         {userData.map( user => (
           <tr>

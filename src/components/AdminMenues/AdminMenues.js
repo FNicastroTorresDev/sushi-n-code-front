@@ -78,7 +78,7 @@ const AdminMenues = () => {
             </tr>
           </thead>
           <tbody className='table-group-divider'>
-            {isLoading ? <tr><Spinner/></tr> : null }
+            {isLoading ? <Spinner/> : null }
 
             {menuData.map( menu => (
               <tr>

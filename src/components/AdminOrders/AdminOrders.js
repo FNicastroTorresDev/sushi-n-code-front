@@ -54,7 +54,7 @@ const AdminOrders = () => {
           </tr>
         </thead>
         <tbody className='table-group-divider'>
-          {isLoading ? <tr><Spinner/></tr> : null }
+          {isLoading ? <Spinner/> : null }
 
           {orderData.map( order => (
             <tr>
