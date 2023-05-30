@@ -13,3 +13,23 @@
     padding: 0.5rem  3rem !important
   }
 }
+@media screen and (min-width: 769px) {
+  .naavbar{
+    padding: 0.5rem  1rem !important
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .navbar-brand{
+    flex-direction: column;
+    margin: 0% !important;
+    
+  }
+  /* .logoText-size{
+    display: none;
+  } */
+  /* .diiv1{
+    justify-content: space-between !important;
+  } */
+}
