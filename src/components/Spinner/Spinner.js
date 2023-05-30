@@ -1,10 +1,10 @@
 import React from 'react'
 
 const Spinner = () => {
-  return (
-    <div className="spinner-border m-5" role="status">
-      <span className="visually-hidden">Cargando...</span>
-    </div>
+  return (    
+      <h2 className='custom-main d-flex justify-content-center align-items-center text-center mt-3'>
+        Cargando<div className="spinner-border" role="status"></div>
+      </h2>    
   )
 }
 

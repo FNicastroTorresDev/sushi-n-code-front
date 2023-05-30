@@ -71,7 +71,8 @@ const LoginForm = () => {
 
         <button type='submit' className='custom-button' disabled={isLoading}>
           {isLoading 
-            ? <div className="spinner-border spinner-border-sm"></div>
+            ? <span className="d-flex justify-content-center align-items-center text-center">Cargando<div className="spinner-border" role="status"></div></span>
+             
             : 'Ingresar'}
         </button>
       </form>
