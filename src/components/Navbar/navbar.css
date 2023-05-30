@@ -1,9 +1,15 @@
 
 .logoText-size {
-  height: 72px;
+  height: 4rem;
   width: auto;
 }
 
 .nav-custom-color {
   background-color: var(--green-primary-color);
+}
+
+@media screen and (min-width: 992px) {
+  .naavbar{
+    padding: 0.5rem  3rem !important
+  }
 }

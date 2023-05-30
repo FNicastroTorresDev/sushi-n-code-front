@@ -13,7 +13,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav class="navbar navbar-expand-lg nav-custom-color px-5">
+    <nav class="navbar navbar-expand-lg nav-custom-color d-flex naavbar">
       <div className="container-fluid d-flex justify-content-lg-between">
         <section>
           <NavLink className="navbar-brand d-flex align-items-center" exact to={'/home'}>
