@@ -13,9 +13,9 @@ const Navbar = () => {
   }
 
   return (
-    <nav class="navbar navbar-expand-lg nav-custom-color px-5">
-      <div className="container-fluid d-flex justify-content-lg-between">
-        <section>
+    <nav class="navbar navbar-expand-lg nav-custom-color d-flex naavbar">
+      <div className="container-fluid diiv1">
+        <section className='section1'>
           <NavLink className="navbar-brand d-flex align-items-center" exact to={'/home'}>
             <img src={logo} alt='Logo de Sushi & Más' />
             <img className='logoText-size' src={logoText} alt='Texto del logo' />

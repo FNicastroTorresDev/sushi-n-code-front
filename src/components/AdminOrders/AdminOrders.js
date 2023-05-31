@@ -41,35 +41,38 @@ const AdminOrders = () => {
   }
 
   return (
-    <table className='my-3 table table-striped table-hover'>
-      <caption className='top fs-3 fw-bold'>Pedidos</caption>
-      <thead>
-        <tr>
-          <th scope="col">Usuario</th>
-          <th scope="col">Menu</th>
-          <th scope="col">Fecha y hora</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody className='table-group-divider'>
-        {isLoading ? <tr><Spinner/></tr> : null }
-
-        {orderData.map( order => (
+    <div className='table-responsive container'>
+      <table className='my-3 table table-striped table-hover'>
+        <caption className='top fs-3 fw-bold'>Pedidos</caption>
+        <thead>
           <tr>
-            <th scope='row'>{order.user}</th>
-            <td>{order.menu}</td>
-            <td>{order.date}</td>
-            <td>{order.state}</td>
-            <td id={order._id}>
-              {order.state === 'Pendiente'
-              ? <i title='Confirmar entrega' className="bi bi-check-lg" onClick={confirmDelivery}></i>
-              : <i title='¡Realizado!' className="bi bi-bag-check"></i>}
-            </td>
+            <th scope="col">Usuario</th>
+            <th scope="col">Menu</th>
+            <th scope="col">Fecha y hora</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody className='table-group-divider'>
+          {isLoading ? <Spinner/> : null }
+
+          {orderData.map( order => (
+            <tr>
+              <th scope='row'>{order.user}</th>
+              <td>{order.menu}</td>
+              <td>{order.date}</td>
+              <td>{order.state}</td>
+              <td id={order._id}>
+                {order.state === 'Pendiente'
+                ? <i title='Confirmar entrega' className="bi bi-check-lg" onClick={confirmDelivery}></i>
+                : <i title='¡Realizado!' className="bi bi-bag-check"></i>}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    
   )
 }
 

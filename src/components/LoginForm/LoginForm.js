@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import './loginForm.css'
 import { login } from '../../services/login'
-import Spinner from '../Spinner/Spinner'
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
@@ -71,7 +70,8 @@ const LoginForm = () => {
 
         <button type='submit' className='custom-button' disabled={isLoading}>
           {isLoading 
-            ? <div className="spinner-border spinner-border-sm"></div>
+            ? <span className="d-flex justify-content-center align-items-center text-center">Cargando<div className="spinner-border" role="status"></div></span>
+             
             : 'Ingresar'}
         </button>
       </form>

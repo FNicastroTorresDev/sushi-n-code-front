@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <main>
-        <section className='custom-container'>
+        <section className='custom-container d-flex'>
           <article className='custom-hero-text'>
             <h2>Descubre sabores tradicionales</h2>
 
