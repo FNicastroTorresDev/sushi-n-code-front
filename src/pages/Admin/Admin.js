@@ -25,7 +25,7 @@ const Admin = () => {
 
   return (
     <>
-      <main className='custom-main my-2 d-flex flex-column align-items-center container'>
+      <main className='my-2 d-flex flex-column align-items-center'>
         <AdminUsers />
 
         <AdminMenues />

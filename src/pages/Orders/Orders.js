@@ -59,12 +59,10 @@ const Orders = () => {
     }).then(() => window.location.replace('/home'))
   }
 
-  if (!menu) return <h2 className='custom-main d-flex justify-content-center align-items-center text-center mt-3'>Cargando menú...</h2>
-
+  if (isLoading) return <Spinner/>
   return (
     <main className='custom-main'>
       <section className='product-detail-container container p-4 mt-5'>
-        {isLoading ? <Spinner/> : null}
 
         <p><h3 className='d-flex justify-content-center'>{menu.name}</h3></p>
 

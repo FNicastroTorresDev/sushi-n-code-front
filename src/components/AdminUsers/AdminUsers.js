@@ -45,7 +45,8 @@ const AdminUsers = () => {
   }
 
   return (
-    <table className='my-3 table table-striped table-hover'>
+    <div className='table-responsive container'>
+      <table className='my-3 table table-striped table-hover'>
       <caption className='top fs-3 fw-bold'>
         Usuarios <i title='Crear nuevo Usuario' className="bi bi-plus-square" data-bs-toggle="modal" data-bs-target="#register-form"></i>
       </caption>
@@ -59,7 +60,7 @@ const AdminUsers = () => {
         </tr>
       </thead>
       <tbody className='table-group-divider'>
-        {isLoading ? <tr><Spinner/></tr> : null }
+        {isLoading ? <Spinner/> : null }
 
         {userData.map( user => (
           <tr>
@@ -78,6 +79,8 @@ const AdminUsers = () => {
         ))}
       </tbody>
     </table>
+    </div>
+    
   )
 }
 
