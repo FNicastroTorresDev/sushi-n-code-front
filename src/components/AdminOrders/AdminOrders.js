@@ -41,7 +41,7 @@ const AdminOrders = () => {
   }
 
   return (
-    <div className='table-responsive container'>
+    <div className='table-responsive tabla container'>
       <table className='my-3 table table-striped table-hover'>
         <caption className='top fs-3 fw-bold'>Pedidos</caption>
         <thead>

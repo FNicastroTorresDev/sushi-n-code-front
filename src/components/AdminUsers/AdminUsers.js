@@ -42,7 +42,7 @@ const AdminUsers = () => {
   }
 
   return (
-    <div className='table-responsive container'>
+    <div className='table-responsive tabla container'>
       <table className='my-3 table table-striped table-hover'>
       <caption className='top fs-3 fw-bold'>
         Usuarios <i title='Crear nuevo Usuario' className="bi bi-plus-square" data-bs-toggle="modal" data-bs-target="#register-form"></i>
