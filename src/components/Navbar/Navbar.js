@@ -20,7 +20,7 @@ const Navbar = () => {
     if ( role?.role === 'admin' ) {
       setIsAdmin(true)
     }
-  }, [token])
+  }, [])
 
   const closeSession = () => {
     localStorage.clear()
