@@ -1,18 +1,15 @@
 import React, { useContext,useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getOneMenu } from '../../services/menus'
-import { createOrder } from '../../services/orders'
 import './orders.css'
-import Swal from 'sweetalert2'
 import Spinner from '../../components/Spinner/Spinner'
 import { dataContext } from "../../Context/DataContext";
 
-const Orders = ({}) => {
+const Orders = () => {
   const { buyProducts } = useContext(dataContext);
   const { id } = useParams()
   const [ menu, setMenu ] = useState({})
   const [ isLoading, setIsLoading ] = useState(true)
-  const user = localStorage.getItem('user')
 
   const getMenu = async (id) => {
     const menuToShow = await getOneMenu(id)
