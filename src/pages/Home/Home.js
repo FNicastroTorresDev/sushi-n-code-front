@@ -18,7 +18,9 @@ const Home = () => {
     menusToShow()
   }, [])
 
+
   if (isLoading) return <Spinner/>
+
   return (
     <main className='custom-main m-3 p-3 d-flex flex-column align-items-center'>
       <h2>Probá nuestros menús</h2>

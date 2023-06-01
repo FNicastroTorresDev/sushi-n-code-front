@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import './navbar.css'
 import logo from '../../assets/logo.png'
 import logoText from '../../assets/logoText.png'
+import jwt from 'jwt-decode'
 
 const Navbar = () => {
+  const token = window.localStorage.getItem('accessToken')
   const location = useLocation()
+  const [ isAdmin, setIsAdmin ] = useState(false)
+
+  useEffect( () => {
+    var role
+
+    if (token) {
+      role = jwt(token)
+    }
+
+    if ( role?.role === 'admin' ) {
+      setIsAdmin(true)
+    }
+  }, [])
 
   const closeSession = () => {
     localStorage.clear()
@@ -29,7 +44,7 @@ const Navbar = () => {
             {
               location.pathname !== '/landing' && location.pathname !== '/login'
                 ? <div className="navbar-nav d-flex">
-                    <NavLink className="dropdown-item mx-2 link-custom text-custom-color" exact to={'/admin'}>Administración</NavLink>
+                    {isAdmin && <NavLink className="dropdown-item mx-2 link-custom text-custom-color" exact to={'/admin'}>Administración</NavLink>}
                     <button className="dropdown-item mx-2 link-custom text-custom-color" onClick={closeSession}>Cerrar sesión</button>
                   </div>
                 : <div className="navbar-nav d-flex">

@@ -16,9 +16,13 @@ const AdminMenues = () => {
   const handleShow = () => setShow(true)
 
   const getAllMenues = async (token) => {
-    const { data } = await allMenues(token)
-    setMenuData(data)
-    setIsLoading(false)
+    try {
+      const { data } = await allMenues(token)
+      setMenuData(data)
+      setIsLoading(false)
+    } catch (err) {
+      setMenuData([])
+    }
   }
 
   useEffect(() => {

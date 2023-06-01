@@ -31,17 +31,14 @@ export const registerUser = async data => {
 }
 
 export const allUsers = async (token) => {
-  const res = await fetch(`${basePath}`, {
-    method: 'GET',
+  const response = await axios.get(`${basePath}`, {
     headers: {
       'Content-Type': 'application/json',
       'accesstoken': `${token}`
     }
   })
 
-  const data = await res.json()
-
-  return data
+  return response.data
 }
 
 export const enableDisable = async (id, action, token) => {
