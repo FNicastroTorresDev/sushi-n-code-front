@@ -15,11 +15,7 @@ const CartContent = () => {
   const { cart } = useContext(dataContext);
   const user = localStorage.getItem('user')
   const token = localStorage.getItem('accessToken')
-  // const product=[]
-  // cart.map((product) => {
-  //   console.log(product)    
-  // })
-
+  
   const addNewOrder = async () => {
 
     const newOrder = {
@@ -65,10 +61,10 @@ const CartContent = () => {
               <CartElements />
             </div>
             
-            <div className=''>
+            <div className='d-flex justify-content-center align-items-center flex-column' >
               <CartTotal />
+              <button className='custom-button link-custom ' onClick={addNewOrder}>¡Pedir ya!</button>
             </div>
-            <button className='custom-button link-custom' onClick={addNewOrder}>¡Pedir ya!</button>
              
           </div>
           
