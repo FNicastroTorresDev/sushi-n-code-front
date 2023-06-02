@@ -21,9 +21,10 @@ const CartContent = () => {
   // })
 
   const addNewOrder = async () => {
+
     const newOrder = {
       user: user,
-      menu: cart.name
+      menu: cart[0].name
     }
 
     const { state } = jwt(token)
