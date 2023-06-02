@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import './navbar.css'
 import logo from '../../assets/logo.png'
@@ -8,7 +8,21 @@ import { useContext } from "react";
 import { dataContext } from "../../Context/DataContext";
 
 const Navbar = () => {
+  const token = window.localStorage.getItem('accessToken')
   const location = useLocation()
+  const [ isAdmin, setIsAdmin ] = useState(false)
+
+  useEffect( () => {
+    var role
+
+    if (token) {
+      role = jwt(token)
+    }
+
+    if ( role?.role === 'admin' ) {
+      setIsAdmin(true)
+    }
+  }, [])
 
   const closeSession = () => {
     localStorage.clear()
@@ -44,8 +58,7 @@ const Navbar = () => {
               : <div className="navbar-nav d-flex">
                   <NavLink className="dropdown-item mx-2 link-custom text-custom-color" exact to={'/login'}>Ingresar</NavLink>
                   <button className="dropdown-item mx-2 link-custom text-custom-color" data-bs-toggle="modal" data-bs-target="#register-form">Registrarme</button>
-                </div>
-            }
+                </div>}
           </div>
         </section>
       </div>

@@ -10,6 +10,8 @@ const Orders = () => {
   const { id } = useParams()
   const [ menu, setMenu ] = useState({})
   const [ isLoading, setIsLoading ] = useState(true)
+  const user = localStorage.getItem('user')
+  const token = localStorage.getItem('accessToken')
 
   const getMenu = async (id) => {
     const menuToShow = await getOneMenu(id)
@@ -20,6 +22,41 @@ const Orders = () => {
   useEffect(() => {
     getMenu(id)
   }, [id])
+
+  const addNewOrder = async () => {
+    const newOrder = {
+      user: user,
+      menu: menu.name
+    }
+
+    const { state } = jwt(token)
+
+    if (state === 'Inactivo') {
+      Swal.fire({
+        icon: 'error',
+        title: 'No tiene permitido hacer pedidos',
+        text: 'Contacte con nuestros representantes para más información.'
+      })
+      return
+    }
+
+    const createOk = await createOrder(newOrder)
+
+    if (!createOk) {
+      Swal.fire({
+        icon: 'error',
+        title: 'No se pudo crear el pedido',
+        text: 'Por favor intente nuevamente.'
+      })
+    }
+
+    Swal.fire({
+      icon:'success',
+      title: '¡Pedido creado!',
+      showConfirmButton: false,
+      timer: 2000
+    }).then(() => window.location.replace('/home'))
+  }
 
   if (isLoading) return <Spinner/>
   

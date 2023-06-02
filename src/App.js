@@ -5,7 +5,6 @@ import Landing from './pages/Landing/Landing';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import Admin from './pages/Admin/Admin';
-import { useState, useEffect } from 'react';
 import { ProtectedRoute } from './components/ProtectedRoutes/ProtectedRoutes';
 import Orders from './pages/Orders/Orders';
 import Footer from './components/Footer/Footer';
@@ -14,15 +13,6 @@ import DataProvider from './Context/DataContext';
 import CartContent from "./components/CartContent/CartContent";
 
 function App() {
-  const [ token, setToken ] = useState(null)
-
-  useEffect(() => {
-    const newToken = localStorage.getItem('accessToken')
-    setToken(newToken)
-  }, [])
-
-  // const token = localStorage.getItem('accessToken')
-
   return (
     <>
       <DataProvider>

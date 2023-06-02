@@ -18,7 +18,6 @@ const Home = () => {
     menusToShow()
   }, [])
 
-  
   if (isLoading) return <Spinner/>
 
   return (

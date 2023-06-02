@@ -10,9 +10,13 @@ const AdminOrders = () => {
   const accessToken = window.localStorage.getItem('accessToken')
 
   const getAllOrders = async (token) => {
-    const { data } = await allOrders(token)
-    setOrderData(data)
-    setIsLoading(false)
+    try {
+      const { data } = await allOrders(token)
+      setOrderData(data)
+      setIsLoading(false)
+    } catch (err) {
+      setOrderData([])
+    }
   }
 
   useEffect(() => {

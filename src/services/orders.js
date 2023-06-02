@@ -1,17 +1,28 @@
+import axios from 'axios'
+
 const basePath = `${process.env.REACT_APP_BASE_PATH}/api/orders`
 
 export const allOrders = async (token) => {
-  const res = await fetch(`${basePath}`, {
-    method: 'GET',
+  // const res = await fetch(`${basePath}`, {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'accesstoken': `${token}`
+  //   }
+  // })
+
+  // const data = await res.json()
+
+  // return data
+
+  const response = await axios.get(`${basePath}`, {
     headers: {
       'Content-Type': 'application/json',
       'accesstoken': `${token}`
     }
   })
 
-  const data = await res.json()
-
-  return data
+  return response.data
 }
 
 export const createOrder = async (data) => {
