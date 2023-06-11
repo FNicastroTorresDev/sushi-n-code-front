@@ -2,19 +2,24 @@ import { Navigate, Outlet } from "react-router-dom";
 import { validateToken } from "../../services/login";
 import { useEffect, useState } from "react";
 
-export const ProtectedRoute = ({ redirectTo="/login"}) => {
+export const ProtectedRoute = ({ redirectTo="/landing"}) => {
   const token = window.localStorage.getItem('accessToken')
   const [ isValid, setIsValid ] = useState()
 
-  useEffect( () => {
-    const validate = async () => {
-      try {
-        const valTok = await validateToken(token)
-        setIsValid(valTok)
-      } catch (err) {
-        setIsValid('invalid')
-      }
+  const validate = async () => {
+    if (!token) {
+      return
     }
+
+    try {
+      const valTok = await validateToken(token)
+      setIsValid(valTok)
+    } catch (err) {
+      setIsValid('invalid')
+    }
+  }
+
+  useEffect( () => {
     validate()
   }, [])
 

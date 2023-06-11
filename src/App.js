@@ -20,18 +20,17 @@ function App() {
 
         <Routes>
           <Route index element={<Navigate to='/landing' />} />
-          <Route path='/landing' element={ <Landing /> } />
+          <Route path='/landing' element={ <Landing /> } /> 
           <Route path='/login' element={ <Login /> } />
-          <Route path='/cart' element={<CartContent />} />
-          <Route path='/orders' element={ <Orders /> } />   
-          <Route path='/cart' element={ <Cart /> } />
-          
           <Route path='*' element={<h1>Error 404</h1>} />
 
           <Route element={<ProtectedRoute />}>
             <Route path='/home' element={<Home />} />
             <Route path='/admin' element={<Admin />} />
+            <Route path='/orders' element={ <Orders /> } />
             <Route path='/orders/:id' element={<Orders />} />
+            <Route path='/cart' element={<CartContent />} />
+            <Route path='/cart' element={ <Cart /> } />
           </Route>
         </Routes>
 
