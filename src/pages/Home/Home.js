@@ -18,7 +18,6 @@ const Home = () => {
     menusToShow()
   }, [])
 
-
   if (isLoading) return <Spinner/>
 
   return (
@@ -31,7 +30,6 @@ const Home = () => {
           <Card id={menu._id} title={menu.name} image={menu.imgUrl} />
         ))}
       </div>
-
     </main>
   )
 }
