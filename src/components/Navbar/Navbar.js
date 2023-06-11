@@ -6,6 +6,7 @@ import logoText from '../../assets/logoText.png'
 import TotalItems from "../CartContent/TotalItems";
 import { useContext } from "react";
 import { dataContext } from "../../Context/DataContext";
+import jwt from 'jwt-decode'
 
 const Navbar = () => {
   const token = window.localStorage.getItem('accessToken')
@@ -46,7 +47,7 @@ const Navbar = () => {
           <div className="collapse navbar-collapse text-custom-color" id="navbarNavAltMarkup">
             {location.pathname !== '/landing' && location.pathname !== '/login'
               ? <div className="navbar-nav d-flex">
-                  <NavLink className="dropdown-item mx-2 link-custom text-custom-color" exact to={'/admin'}>Administración</NavLink>
+                  {isAdmin && <NavLink className="dropdown-item mx-2 link-custom text-custom-color" exact to={'/admin'}>Administración</NavLink>}
                   <button className="dropdown-item mx-2 link-custom text-custom-color" onClick={closeSession}>Cerrar sesión</button>             
                   <NavLink to={"/cart"} className='d-flex'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-cart3 text-white" viewBox="0 0 16 16">
