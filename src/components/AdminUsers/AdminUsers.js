@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './adminUsers.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { allUsers, enableDisable } from '../../services/users'
+import jwt from 'jwt-decode'
 import Swal from 'sweetalert2'
 import Spinner from '../Spinner/Spinner'
 
@@ -9,6 +10,7 @@ const AdminUsers = () => {
   const [ userData, setUserData ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
   const accessToken = window.localStorage.getItem('accessToken')
+  const idUser = jwt(accessToken).id
 
   const getAllUsers = async (token) => {
     try {
@@ -69,11 +71,13 @@ const AdminUsers = () => {
             <td>{user.state}</td>
             <td>{user.role}</td>
             <td>
-              <i id={user._id} {
-                ...user.state === 'Activo'
-                ? { title: 'Inhabilitar', className: 'bi bi-person-slash' }
-                : { title: 'Habilitar', className: 'bi bi-person-check' }
-                } onClick={changeState} ></i>
+              {user._id === idUser 
+                ? <i class="bi bi-person" title='Usuario actual'></i>
+                : <i id={user._id} {
+                  ...user.state === 'Activo'
+                  ? { title: 'Inhabilitar', className: 'bi bi-person-slash' }
+                  : { title: 'Habilitar', className: 'bi bi-person-check' }
+                  } onClick={changeState} ></i>}
             </td>
           </tr>
         ))}
