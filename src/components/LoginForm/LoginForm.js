@@ -16,6 +16,7 @@ const LoginForm = () => {
     if (!accessToken) {
       setWrongCredentials(message)
       setTimeout( () => setWrongCredentials(''), 5000)
+      setIsLoading(false)
       return
     }
 
