@@ -5,6 +5,8 @@ import AdminOrders from '../../components/AdminOrders/AdminOrders'
 import RegisterForm from '../../components/RegisterForm/RegisterForm'
 import AddMenuForm from '../../components/AddMenuForm/AddMenuForm'
 import { validateToken } from '../../services/login'
+import AdminProvider from '../../Context/AdminContex';
+
 
 const Admin = () => {
 
@@ -25,17 +27,20 @@ const Admin = () => {
 
   return (
     <>
-      <main className='my-2 d-flex flex-column align-items-center'>
-        <AdminUsers />
+      <AdminProvider>
+        <main className='my-2 d-flex flex-column align-items-center'>
+          <AdminUsers />
 
-        <AdminMenues />
+          <AdminMenues />
 
-        <AdminOrders />
-      </main>
+          <AdminOrders />
+        </main>
 
-      <RegisterForm />
+        <RegisterForm />
 
-      <AddMenuForm />
+        <AddMenuForm />
+      </AdminProvider>
+      
     </>
   )
 }

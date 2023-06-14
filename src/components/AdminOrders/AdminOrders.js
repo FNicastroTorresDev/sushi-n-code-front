@@ -1,31 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import { allOrders, changeToDelivered } from '../../services/orders'
+import { changeToDelivered } from '../../services/orders'
 import Swal from 'sweetalert2'
 import Spinner from '../Spinner/Spinner'
+import { adminContext } from "../../Context/AdminContex";
 
 const AdminOrders = () => {
-  const [ orderData, setOrderData ] = useState([])
-  const [ isLoading, setIsLoading ] = useState(true)
-  const accessToken = window.localStorage.getItem('accessToken')
-
-  const getAllOrders = async (token) => {
-    try {
-      const { data } = await allOrders(token)
-      setOrderData(data)
-      setIsLoading(false)
-    } catch (err) {
-      setOrderData([])
-    }
-  }
-
-  useEffect(() => {
-    getAllOrders(accessToken)
-  }, [])
+  const { orderData } = useContext(adminContext);
+  const { isLoading } = useContext(adminContext);
 
   const confirmDelivery = async ({ target }) => {
     const id = target.parentNode.id
-
     Swal.fire({
       title: '¿Confirmar entrega?',
       text: '¡No podrás revertir esto!',
@@ -43,7 +28,7 @@ const AdminOrders = () => {
       }
     })
   }
-
+  
   return (
     <div className='table-responsive tabla container'>
       <table className='my-3 table table-striped table-hover'>
