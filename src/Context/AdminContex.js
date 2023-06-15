@@ -10,13 +10,15 @@ const AdminProvider = ({ children }) => {
   const [ userData, setUserData ] = useState([])
   const accessToken = window.localStorage.getItem('accessToken')
   const idUser = jwt(accessToken).id
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [ isLoading1, setIsLoading1 ] = useState(true);
+  const [ isLoading2, setIsLoading2 ] = useState(true);
+  const [ isLoading3, setIsLoading3 ] = useState(true);
 
   const getAllUsers = async (token) => {
     try {
       const { data } = await allUsers(token)
       setUserData(data)
-      setIsLoading(false)
+      setIsLoading1(false)
     } catch (err) {
       setUserData([])
     }
@@ -28,7 +30,7 @@ const AdminProvider = ({ children }) => {
     try {
       const { data } = await allMenues(token)
       setMenuData(data)
-      setIsLoading(false)
+      setIsLoading2(false)
     } catch (err) {
       setMenuData([])
     }
@@ -45,7 +47,7 @@ const AdminProvider = ({ children }) => {
     try {
       const { data } = await allOrders(token)
       setOrderData(data)
-      setIsLoading(false)
+      setIsLoading3(false)
     } catch (err) {
       setOrderData([])
     }
@@ -56,7 +58,9 @@ const AdminProvider = ({ children }) => {
     idUser,
     menuData,
     orderData,
-    isLoading,    
+    isLoading1,  
+    isLoading2,
+    isLoading3  
     }}>{children}
   </adminContext.Provider>;
 };

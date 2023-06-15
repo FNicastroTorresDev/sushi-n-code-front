@@ -13,20 +13,17 @@ const AdminMenues = () => {
   const handleShow = () => setShow(true)
 
   const { menuData } = useContext(adminContext);
-  const { isLoading } = useContext(adminContext);
+  const { isLoading2 } = useContext(adminContext);
   const { orderData } = useContext(adminContext)    
 
   const deleteMenu = async ({ target }) => {    
     const id = target.parentNode.id
     const menu = await getOneMenu(id)
     let bandera=false
-    // console.log(menu.menu.name)
     let contador=0
     orderData.map(order => {   
-      // console.log(order.menu[0])
       if (order.menu[0]===menu.menu.name && order.state==='Pendiente') {
         contador=contador+1
-        // console.log(contador)
         bandera=true
       }
     } )
@@ -61,11 +58,7 @@ const AdminMenues = () => {
         icon: 'error',
         title: `NO SE PUEDE BORRAR EL MENÚ. HAY ${contador} PEDIDO/S PENDIENTES!`
       })
-    }
-    
-    
-      
-      
+    }      
   }
 
   const handleEditModal = async ({ target }) => {
@@ -93,7 +86,7 @@ const AdminMenues = () => {
             </tr>
           </thead>
           <tbody className='table-group-divider'>
-            {isLoading ? <Spinner/> : null }
+            {isLoading2 ? <Spinner/> : null }
 
             {menuData.map( menu => (
               <tr>

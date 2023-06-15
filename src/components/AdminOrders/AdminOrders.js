@@ -7,7 +7,7 @@ import { adminContext } from "../../Context/AdminContex";
 
 const AdminOrders = () => {
   const { orderData } = useContext(adminContext);
-  const { isLoading } = useContext(adminContext);
+  const { isLoading3 } = useContext(adminContext);
 
   const confirmDelivery = async ({ target }) => {
     const id = target.parentNode.id
@@ -43,7 +43,7 @@ const AdminOrders = () => {
           </tr>
         </thead>
         <tbody className='table-group-divider'>
-          {isLoading ? <Spinner/> : null }
+          {isLoading3 ? <Spinner/> : null }
 
           {orderData.map( order => (
             <tr>

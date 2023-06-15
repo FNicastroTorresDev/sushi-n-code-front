@@ -10,7 +10,7 @@ const AdminUsers = () => {
   
   const { userData } = useContext(adminContext);
   const { idUser } = useContext(adminContext);
-  const { isLoading } = useContext(adminContext);
+  const { isLoading1 } = useContext(adminContext);
 
   const changeState = async ({ target: {id, title} }) => {
     Swal.fire({
@@ -48,7 +48,7 @@ const AdminUsers = () => {
         </tr>
       </thead>
       <tbody className='table-group-divider'>
-        {isLoading ? <Spinner/> : null }
+        {isLoading1 ? <Spinner/> : null }
 
         {userData.map( user => (
           <tr>
