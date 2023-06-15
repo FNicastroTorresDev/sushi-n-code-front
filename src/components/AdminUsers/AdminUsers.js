@@ -1,31 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import './adminUsers.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import { allUsers, enableDisable } from '../../services/users'
-import jwt from 'jwt-decode'
+import { enableDisable } from '../../services/users'
 import Swal from 'sweetalert2'
 import Spinner from '../Spinner/Spinner'
+import { adminContext } from "../../Context/AdminContex";
 
 const AdminUsers = () => {
-  const [ userData, setUserData ] = useState([])
-  const [ isLoading, setIsLoading ] = useState(true)
-  const accessToken = window.localStorage.getItem('accessToken')
-  const idUser = jwt(accessToken).id
-
-  const getAllUsers = async (token) => {
-    try {
-      const { data } = await allUsers(token)
-      setUserData(data)
-      setIsLoading(false)
-    } catch (err) {
-      setUserData([])
-    }
-  }
-
-  useEffect(() => {
-    getAllUsers(accessToken)
-  }, [])
   
+  const { userData } = useContext(adminContext);
+  const { idUser } = useContext(adminContext);
+  const { isLoading1 } = useContext(adminContext);
+
   const changeState = async ({ target: {id, title} }) => {
     Swal.fire({
       icon: 'question',
@@ -35,7 +21,7 @@ const AdminUsers = () => {
       cancelButtonText: `Cancelar`,
     }).then( async result => {
       if (result.isConfirmed) {
-        await enableDisable(id, title, accessToken)
+        await enableDisable(id, title)
         Swal.fire({
           icon:'success',
           title: `Cambio realizado`,
@@ -62,7 +48,7 @@ const AdminUsers = () => {
         </tr>
       </thead>
       <tbody className='table-group-divider'>
-        {isLoading ? <Spinner/> : null }
+        {isLoading1 ? <Spinner/> : null }
 
         {userData.map( user => (
           <tr>

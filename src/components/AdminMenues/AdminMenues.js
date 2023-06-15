@@ -1,60 +1,64 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import { allMenues, deleteOneMenu, getOneMenu } from '../../services/menus'
+import { deleteOneMenu, getOneMenu } from '../../services/menus'
 import Swal from 'sweetalert2'
 import Spinner from '../Spinner/Spinner'
 import EditMenuModal from '../EditMenuModal/EditMenuModal'
+import { adminContext } from "../../Context/AdminContex";
 
 const AdminMenues = () => {
-  const [ menuData, setMenuData ] = useState([])
-  const [ isLoading, setIsLoading ] = useState(true)
-  const accessToken = window.localStorage.getItem('accessToken')
-
   const [ menuToEdit, setMenuToEdit ] = useState()
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const getAllMenues = async (token) => {
-    try {
-      const { data } = await allMenues(token)
-      setMenuData(data)
-      setIsLoading(false)
-    } catch (err) {
-      setMenuData([])
-    }
-  }
+  const { menuData } = useContext(adminContext);
+  const { isLoading2 } = useContext(adminContext);
+  const { orderData } = useContext(adminContext)    
 
-  useEffect(() => {
-    getAllMenues(accessToken)
-  }, [])
-
-  const deleteMenu = async ({ target }) => {
+  const deleteMenu = async ({ target }) => {    
     const id = target.parentNode.id
-    Swal.fire({
-      icon: 'question',
-      title: `¿Está seguro?`,
-      text: 'Esta acción no se puede deshacer.',
-      confirmButtonText: `Sí`,
-      showCancelButton: true,
-      cancelButtonText: `Cancelar`,
-    }).then( async result => {
-      if (result.isConfirmed) {
-        const deleted = await deleteOneMenu(id)
-        if (deleted.error) {
-          Swal.fire({
-            icon: 'error',
-            title: `${deleted.error}`
-          })
-        }
-        Swal.fire({
-          icon:'success',
-          title: `${deleted.message}`,
-          showConfirmButton: false,
-          timer: 1500
-        }).then( () => window.location.reload())
+    const menu = await getOneMenu(id)
+    let bandera=false
+    let contador=0
+    orderData.map(order => {   
+      if (order.menu[0]===menu.menu.name && order.state==='Pendiente') {
+        contador=contador+1
+        bandera=true
       }
-    })
+    } )
+    
+    if (bandera===false) {
+      Swal.fire({
+        icon: 'question',
+        title: `¿Está seguro?`,
+        text: 'Esta acción no se puede deshacer.',
+        confirmButtonText: `Sí`,
+        showCancelButton: true,
+        cancelButtonText: `Cancelar`,
+      }).then( async result => {
+        if (result.isConfirmed) {
+          const deleted = await deleteOneMenu(id)
+          if (deleted.error) {
+            Swal.fire({
+              icon: 'error',
+              title: `${deleted.error}`
+            })
+          }
+          Swal.fire({
+            icon:'success',
+            title: `${deleted.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          }).then( () => window.location.reload())
+        }
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: `NO SE PUEDE BORRAR EL MENÚ. HAY ${contador} PEDIDO/S PENDIENTES!`
+      })
+    }      
   }
 
   const handleEditModal = async ({ target }) => {
@@ -82,7 +86,7 @@ const AdminMenues = () => {
             </tr>
           </thead>
           <tbody className='table-group-divider'>
-            {isLoading ? <Spinner/> : null }
+            {isLoading2 ? <Spinner/> : null }
 
             {menuData.map( menu => (
               <tr>
