@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <main className='custom-main m-3 p-3 d-flex flex-column align-items-center'>
-      <h2>Probá nuestros menús</h2>
+      <h2>Probá nuestros menús!!</h2>
 
       <div className='d-flex justify-content-lg-evenly align-items-lg-center flex-wrap'>
 
